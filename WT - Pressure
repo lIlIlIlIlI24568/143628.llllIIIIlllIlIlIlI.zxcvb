@@ -63,8 +63,8 @@ Fluent:Notify({
     Duration = 5
 })
 
-local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "Fullbright", Default = true})
-local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "Doors ESP", Default = false })
+local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "xgo", Default = true})
+local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "门透视", Default = false })
 local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "Monsters ESP", Default = false })
 local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "Items ESP", Default = false })
 local KeyCardsESP = Tabs.Visuals:AddToggle("KeyCardsESP", { Title = "Key Cards ESP", Default = false })
