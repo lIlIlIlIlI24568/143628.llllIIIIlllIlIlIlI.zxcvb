@@ -280,17 +280,17 @@ end
 
 coroutine.wrap(autoKill)()
 
-local Window = Library:Init({Name = "Underground War"})
+local Window = Library:Init({Name = "小go汉化🕊️地下战争2.0"})
 
 --Tabs
 local MainTab = Window:CreateTab({
-    Name = "Main",
+    Name = "主要",
     Icon = "rbxassetid://18756559825"
 })
 
 --Toggles
 MainTab:CreateToggle({
-    Name = "Players",
+    Name = "玩家",
     default = true,
     callback = function(v)
         getgenv().PlayerESP = v
@@ -298,7 +298,7 @@ MainTab:CreateToggle({
 })
 
 MainTab:CreateToggle({
-    Name = "Auto Shoot",
+    Name = "自动传送",
     default = true,
     callback = function(v)
         getgenv().AutoShoot = v
@@ -306,7 +306,7 @@ MainTab:CreateToggle({
 })
 
 MainTab:CreateToggle({
-    Name = "Reach",
+    Name = "到达",
     default = true,
     callback = function(v)
         getgenv().Reach = v
@@ -314,7 +314,7 @@ MainTab:CreateToggle({
 })
 
 MainTab:CreateToggle({
-    Name = "Auto Kill",
+    Name = "自动杀戮",
     default = false,
     callback = function(v)
         getgenv().AutoKill = v
