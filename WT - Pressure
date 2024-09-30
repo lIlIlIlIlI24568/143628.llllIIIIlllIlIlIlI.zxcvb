@@ -876,8 +876,8 @@ end)
 
 
 Tabs.Visuals:AddButton({
-    Title = "Passive SearchLights",
-    Description = "Press it when SearchLight Spawns",
+    Title = "寻找探照灯",
+    Description = "出现灯光，立刻传送",
     Callback = function()
         deleteSearchLight()
     end
@@ -945,8 +945,8 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "cracked by 25ms | Join Discord",
-    Content = "https://discord.gg/AC85fM4Hp8",
+    Title = "谢谢使用小go汉化",
+    Content = "加载完成",
     Duration = 8
 })
 
