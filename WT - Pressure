@@ -38,8 +38,8 @@ local render = false
 local tempDoor = nil
 
 local Window = Fluent:CreateWindow({
-    Title = "WT | Pressure",
-    SubTitle = "cracked by 25ms",
+    Title = "小go汉化🕊️压力",
+    SubTitle = "xgo🕊️🕊️🕊️🕊️",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
@@ -48,7 +48,7 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "house-plus" }),
+    Main = Window:AddTab({ Title = "主要", Icon = "house-plus" }),
     Visuals = Window:AddTab({ Title = "Visuals", Icon = "eye" }),
     Teleports = Window:AddTab({ Title = "Teleports", Icon = "map" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
