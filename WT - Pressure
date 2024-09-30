@@ -65,21 +65,21 @@ Fluent:Notify({
 
 local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "xgo", Default = true})
 local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "门透视", Default = false })
-local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "Monsters ESP", Default = false })
-local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "Items ESP", Default = false })
-local KeyCardsESP = Tabs.Visuals:AddToggle("KeyCardsESP", { Title = "Key Cards ESP", Default = false })
-local GeneratorESP = Tabs.Visuals:AddToggle("GeneratorESP", { Title = "Generator ESP", Default = false })
-local DestroySquiddles = Tabs.Visuals:AddToggle("DestroySquiddles", { Title = "Remove Squiddles", Default = false })
-local DestroyMonsterLocker = Tabs.Visuals:AddToggle("DestroyMonsterLocker", { Title = "Remove MonsterLocker", Default = false })
-local MoneyFarm = Tabs.Visuals:AddToggle("MoneyFarm", {Title = "Farm Money", Description = "Hotkey : NumPad 5", Default = false})
+local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "怪物透视", Default = false })
+local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "物品透视", Default = false })
+local KeyCardsESP = Tabs.Visuals:AddToggle("KeyCardsESP", { Title = "钥匙透视", Default = false })
+local GeneratorESP = Tabs.Visuals:AddToggle("GeneratorESP", { Title = "发电机透视", Default = false })
+local DestroySquiddles = Tabs.Visuals:AddToggle("DestroySquiddles", { Title = "删除 Squiddles", Default = false })
+local DestroyMonsterLocker = Tabs.Visuals:AddToggle("DestroyMonsterLocker", { Title = "删除 MonsterLocker", Default = false })
+local MoneyFarm = Tabs.Visuals:AddToggle("MoneyFarm", {Title = "传送拾取钱", Description = "xgo : 🕊️🕊️🕊️", Default = false})
 
 
 local WalkSpeedSlider = Tabs.Main:AddSlider("WalkSpeedSlider", {
-    Title = "Walk Speed",
-    Description = "Adjust the player's walk speed",
+    Title = "速度",
+    Description = "玩家速度调节",
     Default = 16,
     Min = 0,
-    Max = 25,
+    Max = 100,
     Rounding = 1,
     Callback = function(Value)
         local player = game.Players.LocalPlayer
@@ -95,8 +95,8 @@ end)
 WalkSpeedSlider:SetValue(16)
 
 local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
-    Title = "FOV",
-    Description = "Adjust the player's field of view",
+    Title = "视野",
+    Description = "玩家视野调节",
     Default = 70,
     Min = 0,
     Max = 120,
@@ -208,8 +208,8 @@ local function multiFinder()
                             if not detectedMonsters[object] then
                                 detectedMonsters[object] = true
                                 Fluent:Notify({
-                                    Title = "Warning",
-                                    Content = "Watch out " .. object.Name .. " is coming!",
+                                    Title = "xgo🕊️",
+                                    Content = "注意来了 " .. object.Name .. " 请寻找掩体!",
                                     Duration = 8
                                 })
                             end
