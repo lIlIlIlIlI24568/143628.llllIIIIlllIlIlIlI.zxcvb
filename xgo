@@ -1,1 +1,26 @@
+local scrName;
 
+game:GetService("StarterGui"):SetCore("小go搜索中", {Title = "Script",Text = "请稍候...尚未重新执行，或者如果需要很长时间已经重新执行",Duration = 10})
+game:GetService("StarterGui"):SetCore("脚本", {Title = "Script",Text = "检查键后，有时您必须重新执行以使脚本显示",Duration = 10})
+
+if game.GameId == 4367208330 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/Pressure.py';
+elseif game.GameId == 1235188606 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/DragonAdventure.py';
+elseif game.GameId == 2440500124 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/main/Door.py';
+elseif game.GameId == 2294168059 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/TheMimic.py';
+elseif game.GameId == 1000233041 then
+	scrName = 'https://raw.githubusercontent.com/Yumiara/Python/refs/heads/main/SCP3008.py';
+end;
+
+
+if scrName then
+	local source = game:HttpGetAsync(scrName);
+	local Env = loadstring(source);
+	
+	Env();
+else
+	game.Players.LocalPlayer:Kick('没有该脚本，再见🕊️');
+end;
