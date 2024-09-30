@@ -1,1 +1,322 @@
+local lp = game:GetService("Players").LocalPlayer
+local Library = loadstring(game:HttpGet("https://gist.githubusercontent.com/MrTomatoesM/a60dfc716db2610e1555ac57703bfad9/raw/My%2520UI%2520Library"))()
+--Variables
+local cam = game:GetService("Workspace").CurrentCamera
+local rs = game:GetService("ReplicatedStorage")
+local runs = game:GetService("RunService")
 
+getgenv().PlayerESP = true
+getgenv().AutoShoot = true
+getgenv().AutoKill = false
+getgenv().Reach = true
+
+--Player Esp
+function espP(v)
+    local box = Drawing.new("Square")
+    box.Visible = false
+    box.Transparency = 1
+    box.Thickness = 1
+    box.Filled = false
+
+    local text = Drawing.new("Text")
+    text.Visible = false
+    text.Transparency = 1
+    text.Font = 2
+    text.Center = true
+    text.OutlineColor = Color3.new(0, 0, 0)
+    text.Size = 15
+    text.Outline = true
+    text.Text = v.Name
+
+    function boxesp()
+        game:GetService("RunService").RenderStepped:Connect(
+            function()
+                if
+                    v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and
+                        v.Character:FindFirstChild("HumanoidRootPart") ~= nil and
+                        v ~= lp and
+                        v.Character.Humanoid.Health > 0
+                    then
+                    local rootPart = v.Character.HumanoidRootPart
+                    local headPart = v.Character.Head
+                    local rootPos, rootVis = cam:worldToViewportPoint(rootPart.Position)
+                    local headPos = cam:worldToViewportPoint(headPart.Position + Vector3.new(0, 0.5, 0))
+                    local legPos = cam:worldToViewportPoint(rootPart.Position - Vector3.new(0, 3, 0))
+
+                    if rootVis then
+                        box.Size = Vector2.new(1000 / rootPos.Z, headPos.Y - legPos.Y)
+                        box.Position = Vector2.new(rootPos.X - box.Size.X / 2, rootPos.Y - box.Size.Y / 2)
+
+                        text.Position = Vector2.new(headPos.X, headPos.Y - 20)
+
+                        if getgenv().PlayerESP then
+                            text.Text = v.Name
+                            box.Color = v.TeamColor.Color
+                            text.Color = v.TeamColor.Color
+
+                            box.Visible = true
+                            text.Visible = true
+                        else
+                            box.Visible = false
+                            text.Visible = false
+                        end
+                    else
+                        box.Visible = false
+                        text.Visible = false
+                    end
+                else
+                    box.Visible = false
+                    text.Visible = false
+                end
+            end
+        )
+    end
+
+    coroutine.wrap(boxesp)()
+
+    game:GetService("Players").PlayerRemoving:Connect(
+        function(player)
+            if player == v then
+                box:Remove()
+                text:Remove()
+            end
+        end
+    )
+end
+
+--Start Player Esp
+for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+    espP(v)
+end
+
+--If Player Joined
+game:GetService("Players").PlayerAdded:Connect(
+    function(player)
+        espP(player)
+    end
+)
+
+--Auto Shoot
+
+--On screen
+function onscreen(target)
+    if target:FindFirstChild("HumanoidRootPart") then
+        local vector, onscreen = cam:WorldToScreenPoint(target.HumanoidRootPart.Position)
+
+        if onscreen then
+            return true
+        else
+            return false
+        end
+    end
+end
+
+--Can see Target
+function canseeit(target)
+    if lp.Character and lp.Character:FindFirstChild("Torso") and target:FindFirstChild("Torso") then
+        local params = RaycastParams.new()
+        params.FilterDescendantsInstances = {lp.Character}
+        params.FilterType = Enum.RaycastFilterType.Exclude
+
+        local direction = target.Torso.Position - lp.Character.Torso.Position
+
+        local ray = workspace:Raycast(lp.Character.Torso.Position, direction, params)
+
+        if ray then
+            if ray.Instance:IsDescendantOf(target) then
+                return true
+            else
+                return false
+            end
+        end
+    end
+end
+
+--Get the best Target
+function getTarget()
+    local target = nil
+    local dis = math.huge
+    for _, plr in pairs(game:GetService("Players"):GetChildren()) do
+        if
+            plr ~= lp and lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") and
+                lp.Character:FindFirstChild("Sniper") and
+                plr.Character and
+                plr.Character:FindFirstChild("HumanoidRootPart") and
+                plr.Character:FindFirstChild("Humanoid") and
+                plr.Character.Humanoid.Health > 0 and
+                plr.TeamColor ~= lp.TeamColor and
+                onscreen(plr.Character) and
+                canseeit(plr.Character)
+            then
+            local mag = (plr.Character.HumanoidRootPart.Position - lp.Character.HumanoidRootPart.Position).magnitude
+
+            if mag < dis then
+                dis = mag
+                target = plr.Character
+            end
+        end
+    end
+    return target
+end
+
+local autoShCor =
+    coroutine.wrap(
+    function()
+        while task.wait() do
+            if getgenv().AutoShoot and getTarget() then
+                local args = {
+                    [1] = getTarget().HumanoidRootPart.Position,
+                    [2] = "Sniper"
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Remote"):WaitForChild(
+                    "ShotTarget"
+                ):FireServer(unpack(args))
+            end
+        end
+    end
+)
+
+autoShCor()
+
+--Reach
+--// Setting \--
+local range = 6
+
+--// Variable \--
+local player = game:GetService("Players").LocalPlayer
+
+--// Script \--
+game:GetService("RunService").RenderStepped:Connect(
+    function()
+        if getgenv().Reach then
+            local p = game.Players:GetPlayers()
+            for i = 2, #p do
+                local v = p[i].Character
+                if
+                    v and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and
+                        v:FindFirstChild("HumanoidRootPart") and
+                        player:DistanceFromCharacter(v.HumanoidRootPart.Position) <= range
+                    then
+                    local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+                    if tool and tool:FindFirstChild("Handle") then
+                        for i, v in next, v:GetChildren() do
+                            if v:IsA("BasePart") then
+                                firetouchinterest(tool.Handle, v, 0)
+                                firetouchinterest(tool.Handle, v, 1)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+)
+
+--Auto Kill
+function autoKill()
+    while task.wait() do
+        local lphuman = lp.Character:FindFirstChild("HumanoidRootPart")
+        local tool = lp.Character and lp.Character:FindFirstChildOfClass("Tool")
+        if
+            getgenv().AutoKill and lp and lp.Character and lphuman and tool and tool.Name == "Sword" and
+                tool:FindFirstChild("Handle") and
+                lphuman.Parent.Humanoid.Health > 0
+            then
+            if lp.Team.Name == "Blue" then
+                lp.Character.HumanoidRootPart.CFrame =
+                    CFrame.new(-25.12908363342285, 3.3999993801116943, 184.29901123046875)
+            else
+                lp.Character.HumanoidRootPart.CFrame =
+                    CFrame.new(24.92923927307129, 3.3999993801116943, -184.16226196289062)
+            end
+            task.wait()
+
+            for i, v in pairs(game.Players:GetPlayers()) do
+                if
+                    lp and lp.Character and lphuman and tool and tool.Name == "Sword" and tool:FindFirstChild("Handle") and
+                        lphuman.Parent.Humanoid.Health > 0 and
+                        v ~= lp and
+                        not v.Neutral and
+                        v.Character and
+                        v.Character:FindFirstChild("Humanoid") and
+                        v.Character:FindFirstChild("HumanoidRootPart") and
+                        not v.Character:FindFirstChild("ForceField") and
+                        v.Character.Humanoid.Health > 0 and
+                        v.TeamColor ~= lp.TeamColor
+                    then
+                    local human = v.Character.HumanoidRootPart
+                    local killed = false
+
+                    local loopC =
+                        runs.RenderStepped:Connect(
+                        function()
+                            if
+                                not v and not v.Character and not v.Character:FindFirstChild("Humanoid") and not lp and
+                                    not lp.Character and
+                                    not lp.Character:FindFirstChild("Humanoid")
+                                then
+                                killed = true
+                            end
+                            if v.Character:FindFirstChild("ForceField") then
+                                killed = true
+                            end
+                            tool:Activate()
+                            lphuman.CFrame = human.CFrame + (human.CFrame.LookVector * -5)
+                            if v.Character.Humanoid.Health <= 0 or lp.Character.Humanoid.Health <= 0 then
+                                killed = true
+                            end
+                        end
+                    )
+                    repeat
+                        task.wait()
+                    until killed
+                    loopC:Disconnect()
+                end
+            end
+        end
+    end
+end
+
+coroutine.wrap(autoKill)()
+
+local Window = Library:Init({Name = "Underground War"})
+
+--Tabs
+local MainTab = Window:CreateTab({
+    Name = "Main",
+    Icon = "rbxassetid://18756559825"
+})
+
+--Toggles
+MainTab:CreateToggle({
+    Name = "Players",
+    default = true,
+    callback = function(v)
+        getgenv().PlayerESP = v
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Auto Shoot",
+    default = true,
+    callback = function(v)
+        getgenv().AutoShoot = v
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Reach",
+    default = true,
+    callback = function(v)
+        getgenv().Reach = v
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Auto Kill",
+    default = false,
+    callback = function(v)
+        getgenv().AutoKill = v
+    end
+})
