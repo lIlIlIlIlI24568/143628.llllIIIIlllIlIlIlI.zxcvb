@@ -948,3 +948,4 @@ Fluent:Notify({
     Title = "cracked by 25ms | Join Discord",
     Content = "https://discord.gg/AC85fM4Hp8",
   
+SaveManager:LoadAutoloadConfig()
