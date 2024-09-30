@@ -38,8 +38,8 @@ local render = false
 local tempDoor = nil
 
 local Window = Fluent:CreateWindow({
-    Title = "小go汉化🕊️压力",
-    SubTitle = "xgo🕊️🕊️🕊️",
+    Title = "WT | Pressure",
+    SubTitle = "cracked by 25ms",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
@@ -48,38 +48,38 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "主要", Icon = "house-plus" }),
-    Visuals = Window:AddTab({ Title = "透视物品", Icon = "eye" }),
-    Teleports = Window:AddTab({ Title = "传送点", Icon = "map" }),
-    Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
+    Main = Window:AddTab({ Title = "Main", Icon = "house-plus" }),
+    Visuals = Window:AddTab({ Title = "Visuals", Icon = "eye" }),
+    Teleports = Window:AddTab({ Title = "Teleports", Icon = "map" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
 local Options = Fluent.Options
 
 Fluent:Notify({
-    Title = "xgo压力汉化:",
+    Title = "cracked by 25ms | Last Update:",
     Content = "2024-07-25",
     SubContent = "v2.5",
     Duration = 5
 })
 
-local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "Fullbright", Default = true})
-local DoorESP = Tabs.Visuals:AddToggle("门透视", { Title = "Door ESP", Default = false })
-local MonstersESP = Tabs.Visuals:AddToggle("怪物透视", { Title = "Monsters ESP", Default = false })
-local ItemsESP = Tabs.Visuals:AddToggle("物品透视", { Title = "Items ESP", Default = false })
-local KeyCardsESP = Tabs.Visuals:AddToggle("钥匙透视", { Title = "KeyCards ESP", Default = false })
-local GeneratorESP = Tabs.Visuals:AddToggle("发电机透视", { Title = "Generator ESP", Default = false })
-local DestroySquiddles = Tabs.Visuals:AddToggle("删除Squiddles", { Title = "Destroy Squiddles", Default = false })
-local DestroyMonsterLocker = Tabs.Visuals:AddToggle("删除MonsterLocker", { Title = "Destroy MonsterLocker", Default = false })
-local MoneyFarm = Tabs.Visuals:AddToggle("自动传送拾取", {Title = "MoneyFarm", Description = "Hotkey : NumPad 5", Default = false})
+local FullbrightToggle = Tabs.Visuals:AddToggle("Fullbright", {Title = "Fullbright", Default = true})
+local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "Doors ESP", Default = false })
+local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "Monsters ESP", Default = false })
+local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "Items ESP", Default = false })
+local KeyCardsESP = Tabs.Visuals:AddToggle("KeyCardsESP", { Title = "Key Cards ESP", Default = false })
+local GeneratorESP = Tabs.Visuals:AddToggle("GeneratorESP", { Title = "Generator ESP", Default = false })
+local DestroySquiddles = Tabs.Visuals:AddToggle("DestroySquiddles", { Title = "Remove Squiddles", Default = false })
+local DestroyMonsterLocker = Tabs.Visuals:AddToggle("DestroyMonsterLocker", { Title = "Remove MonsterLocker", Default = false })
+local MoneyFarm = Tabs.Visuals:AddToggle("MoneyFarm", {Title = "Farm Money", Description = "Hotkey : NumPad 5", Default = false})
 
 
 local WalkSpeedSlider = Tabs.Main:AddSlider("WalkSpeedSlider", {
-    Title = "速度",
-    Description = "玩家速度调整",
+    Title = "Walk Speed",
+    Description = "Adjust the player's walk speed",
     Default = 16,
     Min = 0,
-    Max = 100,
+    Max = 25,
     Rounding = 1,
     Callback = function(Value)
         local player = game.Players.LocalPlayer
@@ -95,9 +95,9 @@ end)
 WalkSpeedSlider:SetValue(16)
 
 local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
-    Title = "视野",
+    Title = "FOV",
     Description = "Adjust the player's field of view",
-    Default = 玩家视野调整,
+    Default = 70,
     Min = 0,
     Max = 120,
     Rounding = 1,
@@ -208,8 +208,8 @@ local function multiFinder()
                             if not detectedMonsters[object] then
                                 detectedMonsters[object] = true
                                 Fluent:Notify({
-                                    Title = "xgo🐇来了",
-                                    Content = "小心 " .. object.Name .. " 即将到来!",
+                                    Title = "Warning",
+                                    Content = "Watch out " .. object.Name .. " is coming!",
                                     Duration = 8
                                 })
                             end
