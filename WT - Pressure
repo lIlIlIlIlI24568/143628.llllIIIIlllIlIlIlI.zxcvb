@@ -1,3 +1,5 @@
+-- src leaked by 25ms
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -36,8 +38,8 @@ local render = false
 local tempDoor = nil
 
 local Window = Fluent:CreateWindow({
-    Title = "WT Team | Pressure",
-    SubTitle = "by WT Team",
+    Title = "小go汉化🕊️压力",
+    SubTitle = "xgo🕊️🕊️🕊️🕊️🕊️🕊️🕊️🕊️🕊️🕊️",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
@@ -46,16 +48,16 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "house-plus" }),
-    Visuals = Window:AddTab({ Title = "Visuals", Icon = "eye" }),
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "map" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    Main = Window:AddTab({ Title = "主要", Icon = "house-plus" }),
+    Visuals = Window:AddTab({ Title = "透视物品", Icon = "eye" }),
+    Teleports = Window:AddTab({ Title = "传送点", Icon = "map" }),
+    Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
 }
 
 local Options = Fluent.Options
 
 Fluent:Notify({
-    Title = "WT Team | Last Update:",
+    Title = "xgo压力汉化🕊️",
     Content = "2024-07-25",
     SubContent = "v2.5",
     Duration = 5
@@ -73,11 +75,11 @@ local MoneyFarm = Tabs.Visuals:AddToggle("MoneyFarm", {Title = "Farm Money", Des
 
 
 local WalkSpeedSlider = Tabs.Main:AddSlider("WalkSpeedSlider", {
-    Title = "Walk Speed",
-    Description = "Adjust the player's walk speed",
+    Title = "步行速度",
+    Description = "调整玩家步行速度",
     Default = 16,
     Min = 0,
-    Max = 25,
+    Max = 120,
     Rounding = 1,
     Callback = function(Value)
         local player = game.Players.LocalPlayer
@@ -93,8 +95,8 @@ end)
 WalkSpeedSlider:SetValue(16)
 
 local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
-    Title = "FOV",
-    Description = "Adjust the player's field of view",
+    Title = "视角",
+    Description = "调整玩家的视野",
     Default = 70,
     Min = 0,
     Max = 120,
@@ -874,7 +876,7 @@ end)
 
 
 Tabs.Visuals:AddButton({
-    Title = "Passive SearchLights",
+    Title = "被动探照灯",
     Description = "Press it when SearchLight Spawns",
     Callback = function()
         deleteSearchLight()
@@ -943,9 +945,6 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "WT Team | Join Discord",
-    Content = "https://discord.gg/ZPQcGpvjVC",
-    Duration = 8
-})
-
-SaveManager:LoadAuto
+    Title = "谢谢使用xgo汉化",
+    Content = "xgo🕊️🕊️🕊️🕊️",
+  
