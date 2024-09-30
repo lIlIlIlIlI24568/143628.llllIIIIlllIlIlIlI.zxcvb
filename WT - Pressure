@@ -49,21 +49,21 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Main = Window:AddTab({ Title = "主要", Icon = "house-plus" }),
-    Visuals = Window:AddTab({ Title = "Visuals", Icon = "eye" }),
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "map" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    Visuals = Window:AddTab({ Title = "物品透视", Icon = "eye" }),
+    Teleports = Window:AddTab({ Title = "传送点", Icon = "map" }),
+    Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
 }
 
 local Options = Fluent.Options
 
 Fluent:Notify({
-    Title = "cracked by 25ms | Last Update:",
+    Title = "xgo压力汉化🕊️",
     Content = "2024-07-25",
     SubContent = "v2.5",
     Duration = 5
 })
 
-local FullbrightToggle = Tabs.Visuals:AddToggle("Fullbright", {Title = "Fullbright", Default = true})
+local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "Fullbright", Default = true})
 local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "Doors ESP", Default = false })
 local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "Monsters ESP", Default = false })
 local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "Items ESP", Default = false })
