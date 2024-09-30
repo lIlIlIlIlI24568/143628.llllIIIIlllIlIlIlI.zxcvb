@@ -63,15 +63,15 @@ Fluent:Notify({
     Duration = 5
 })
 
-local FullbrightToggle = Tabs.Visuals:AddToggle("Fullbright", {Title = "Fullbright", Default = true})
-local DoorESP = Tabs.Visuals:AddToggle("DoorESP", { Title = "门透视", Default = false })
-local MonstersESP = Tabs.Visuals:AddToggle("MonstersESP", { Title = "怪物透视", Default = false })
-local ItemsESP = Tabs.Visuals:AddToggle("ItemsESP", { Title = "物品透视", Default = false })
-local KeyCardsESP = Tabs.Visuals:AddToggle("KeyCardsESP", { Title = "要是透视", Default = false })
-local GeneratorESP = Tabs.Visuals:AddToggle("GeneratorESP", { Title = "发电机透视", Default = false })
-local DestroySquiddles = Tabs.Visuals:AddToggle("DestroySquiddles", { Title = "删除 Squiddles", Default = false })
-local DestroyMonsterLocker = Tabs.Visuals:AddToggle("DestroyMonsterLocker", { Title = "删除 MonsterLocker", Default = false })
-local MoneyFarm = Tabs.Visuals:AddToggle("MoneyFarm", {Title = "自动传送拾取", Description = "热键 : NumPad 5", Default = false})
+local FullbrightToggle = Tabs.Visuals:AddToggle("xgo", {Title = "Fullbright", Default = true})
+local DoorESP = Tabs.Visuals:AddToggle("门透视", { Title = "Door ESP", Default = false })
+local MonstersESP = Tabs.Visuals:AddToggle("怪物透视", { Title = "Monsters ESP", Default = false })
+local ItemsESP = Tabs.Visuals:AddToggle("物品透视", { Title = "Items ESP", Default = false })
+local KeyCardsESP = Tabs.Visuals:AddToggle("钥匙透视", { Title = "KeyCards ESP", Default = false })
+local GeneratorESP = Tabs.Visuals:AddToggle("发电机透视", { Title = "Generator ESP", Default = false })
+local DestroySquiddles = Tabs.Visuals:AddToggle("删除Squiddles", { Title = "Destroy Squiddles", Default = false })
+local DestroyMonsterLocker = Tabs.Visuals:AddToggle("删除MonsterLocker", { Title = "Destroy MonsterLocker", Default = false })
+local MoneyFarm = Tabs.Visuals:AddToggle("自动传送拾取", {Title = "MoneyFarm", Description = "Hotkey : NumPad 5", Default = false})
 
 
 local WalkSpeedSlider = Tabs.Main:AddSlider("WalkSpeedSlider", {
