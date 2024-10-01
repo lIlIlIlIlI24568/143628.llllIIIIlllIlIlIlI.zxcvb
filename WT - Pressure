@@ -51,7 +51,7 @@ local Tabs = {
     Main = Window:AddTab({ Title = "主要", Icon = "house-plus" }),
     Visuals = Window:AddTab({ Title = "物品透视", Icon = "eye" }),
     Teleports = Window:AddTab({ Title = "传送点", Icon = "map" }),
-    Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
 local Options = Fluent.Options
@@ -79,7 +79,7 @@ local WalkSpeedSlider = Tabs.Main:AddSlider("WalkSpeedSlider", {
     Description = "玩家速度调节",
     Default = 16,
     Min = 0,
-    Max = 100,
+    Max = 360,
     Rounding = 1,
     Callback = function(Value)
         local player = game.Players.LocalPlayer
@@ -99,7 +99,7 @@ local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
     Description = "玩家视野调节",
     Default = 70,
     Min = 0,
-    Max = 120,
+    Max = 360,
     Rounding = 1,
     Callback = function(Value)
         local player = game.Players.LocalPlayer
@@ -539,48 +539,48 @@ end
 
 
 Tabs.Teleports:AddButton({
-    Title = "Teleport to Last Room",
-    Description = "Hotkey : NumPad 1",
+    Title = "传送到最后一个房间",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToLastRoom()
     end
 })
 
 Tabs.Teleports:AddButton({
-    Title = "Teleport to Last Room Opened",
-    Description = "Hotkey : NumPad 2",
+    Title = "传送到打开的房间",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToLastRoomOpened()
     end
 })
 
 Tabs.Teleports:AddButton({
-    Title = "Teleport to Last Locker",
-    Description = "Hotkey : NumPad 3",
+    Title = "传送到附近的柜子",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToLastLocker()
     end
 })
 
 Tabs.Teleports:AddButton({
-    Title = "Teleport to KeyCard",
-    Description = "Hotkey : NumPad 4",
+    Title = "传送 to KeyCard",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToKeyCard()
     end
 })
 
 Tabs.Teleports:AddButton({
-    Title = "Hide From Monsters",
-    Description = "Hotkey : NumPad 7",
+    Title = "隐藏怪物",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToOUTOFLastRoomOpened()
     end
 })
 
 Tabs.Teleports:AddButton({
-    Title = "Teleport to Generator",
-    Description = "Hotkey : NumPad 8",
+    Title = "传送到生成器",
+    Description = "xgo汉化 : 🕊️🕊️🕊️",
     Callback = function()
         tpToGenerator()
     end
