@@ -2253,7 +2253,7 @@ G2L["13d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["13d"]["Selectable"] = false;
 G2L["13d"]["Size"] = UDim2.new(0, 17, 0, 17);
 G2L["13d"]["Name"] = [[Settings]];
-G2L["13d"]["Text"] = [[xgo +]];
+G2L["13d"]["Text"] = [[    xgo +]];
 G2L["13d"]["Position"] = UDim2.new(0.0041841003112494946, 0, 0.9237288236618042, 0);
 G2L["13d"]["BackgroundTransparency"] = 1;
 
